@@ -1,0 +1,50 @@
+#Steps
+1. Application properties
+2. CSS and images from Skeleton -> static in Project
+3. Templates from Skeleton -> templates in Project
+4. Connect DB
+5. Packages: config, model, repository, service, web
+6. Model -> entity -> create entities and enums
+7. Create CategoryRepository
+8. CategoryService and CategoryServiceImpl
+9. Package: init -> DBInit
+10. Initialize categories
+11. Home Controller -> GetMapping home
+12. User Controller -> GetMapping register
+13. Templates -> fragments -> commons
+14.Model -> binding package
+15. UserRegisterBindingModel
+16. User Controller -> PostMapping register
+17. ModelAttribute
+18. Register html -> is-invalid, invalid-feedback
+19. Model -> service -> User Service Model
+20 Config -> Application Bean Configuration -> Model Mapper
+21. User Repo
+22. User Service
+23.  User Login Binding Model
+24. User Controller -> GetMapping login
+25. User Controller -> PostMapping login
+26. Sec -> Current User
+27. ModelAttribute
+28. Login html -> is-invalid, invalid-feedback, isFound
+29. Commons html -> links
+30. Order Controller - GetMapping add
+31. Order Add Binding Model
+32. Order Controller - PostMapping add
+33. ModelAttribute
+34. Order add html -> is-invalid, invalid-feedback, drop-down
+35. Order Service Model
+36. Order Repository
+37. Order Service
+38. User Controller -> GetMapping logout
+39. Home Controller -> inject Model Mapper, Current User, Order Service, User Service
+40. Model -> view -> Order View Model
+41. Home html -> th:src, img concat, th:href-Readybtn, th:text-totalTime
+42. User View Model
+43. Add bidirectional relation User
+44. Order Controller -> GetMapping ready
+
+#Extra
+1. UserLoginBindingModel -> message
+2. Login html -> change errorclass, remove invalid-feedback, th:if in small
+3. div for iterating trough all errors
