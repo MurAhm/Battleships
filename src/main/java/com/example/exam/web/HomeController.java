@@ -1,5 +1,6 @@
 package com.example.exam.web;
 
+import com.example.exam.model.view.AttackerViewModel;
 import com.example.exam.model.view.ShipViewModel;
 import com.example.exam.sec.CurrentUser;
 import com.example.exam.service.ShipService;
@@ -31,9 +32,14 @@ public class HomeController {
 
         List<ShipViewModel> ships = shipService.findAllShipsByIdAndHealthAndPower();
 
+        List<AttackerViewModel> attackers=  this.shipService.findShipsByOwner(currentUser.getId());
+        List<AttackerViewModel> defenders=  this.shipService.findShipOfAnotherOwners(currentUser.getId());
+
 
 
         model.addAttribute("ships", ships);
+        model.addAttribute("attackers", attackers);
+        model.addAttribute("defenders", defenders);
 
 
 

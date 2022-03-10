@@ -53,6 +53,12 @@ public class ShipController {
         return "redirect:/";
     }
 
+
+    @PostMapping("/fire")
+    public String fire(@RequestParam("attackerId") Long attackerId, @RequestParam("defenderId") Long defenderId) {
+        shipService.fire(attackerId, defenderId);
+        return "redirect:/";
+    }
 //    @GetMapping("/delete/{id}")
 //    public String ready(@PathVariable Long id) {
 //        shipService.deleteShip(id);

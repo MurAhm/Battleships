@@ -2,6 +2,7 @@ package com.example.exam.service.impl;
 
 import com.example.exam.model.entity.Ship;
 import com.example.exam.model.service.ShipServiceModel;
+import com.example.exam.model.view.AttackerViewModel;
 import com.example.exam.model.view.ShipViewModel;
 import com.example.exam.repository.ShipRepository;
 import com.example.exam.sec.CurrentUser;
@@ -53,4 +54,41 @@ public class ShipServiceImpl implements ShipService {
                 })
                 .collect(Collectors.toList());
     }
+     @Override
+    public List<AttackerViewModel> findShipsByOwner(Long id) {
+        return this.shipRepository.findByUserId(id)
+                .stream()
+                .map(ship -> modelMapper.map(ship, AttackerViewModel.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<AttackerViewModel> findShipOfAnotherOwners(Long id) {
+        return this.shipRepository.findByUserIdNot(id)
+                .stream()
+                .map(ship -> modelMapper.map(ship, AttackerViewModel.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public void fire(Long attackerId, Long defenderId) {
+        Ship attacker = this.shipRepository.findById(attackerId).orElse(null);
+        Ship defender = this.shipRepository.findById(defenderId).orElse(null);
+
+
+
+        if (defender != null &&attacker != null )  {
+                long dif = defender.getHealth() - attacker.getPower();
+            if (dif <= 0L) {
+                this.shipRepository.deleteById(defenderId);
+                return;
+            }
+            defender.setHealth(dif);
+
+            this.shipRepository.save(defender);
+
+        }
+
+    }
+
 }
